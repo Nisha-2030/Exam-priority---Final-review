@@ -1,25 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 .card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   padding: 1.5rem;
-  margin-bottom: 1rem;
-  transition: box-shadow 0.3s;
+  margin-bottom: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 40px rgba(106, 79, 176, 0.15);
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .card-title {
-  margin: 0 0 1rem 0;
-  color: #2c3e50;
+  margin: 0 0 1.25rem 0;
+  color: var(--text-dark);
   font-size: 1.3rem;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 0.5rem;
+  font-weight: 700;
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 .card-content {
-  color: #34495e;
-  line-height: 1.6;
+  color: #555;
+  line-height: 1.7;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ============ CARD VARIANTS ============ */
+.card.card-primary {
+  background: linear-gradient(135deg, rgba(167, 111, 255, 0.1) 0%, rgba(118, 75, 162, 0.05) 100%);
+}
+
+.card.card-primary .card-title {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+
+.card.card-success {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(46, 204, 113, 0.05) 100%);
+}
+
+.card.card-success .card-title {
+  border-bottom-color: #4caf50;
+  color: #4caf50;
+}
+
+.card.card-warning {
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 87, 34, 0.05) 100%);
+}
+
+.card.card-warning .card-title {
+  border-bottom-color: #ff9800;
+  color: #ff9800;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: slideInUp 0.5s ease;
+}
+
+/* ============ RESPONSIVE DESIGN ============ */
+@media (max-width: 768px) {
+  .card {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .card-content {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .card-title {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-content {
+    font-size: 0.9rem;
+  }
 }

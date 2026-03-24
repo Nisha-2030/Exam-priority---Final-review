@@ -13,6 +13,7 @@ export const deleteSubject = (id) => apiClient.delete(`/subjects/${id}`);
 
 export const getTopicsBySubject = (subjectId) =>
   apiClient.get(`/subjects/${subjectId}/topics`);
+export const getTopicById = (id) => apiClient.get(`/topics/${id}`);
 export const getHighMediumTopics = (subjectId) =>
   apiClient.get(`/subjects/${subjectId}/topics/filtered`);
 export const createTopic = (data) => apiClient.post('/topics', data);

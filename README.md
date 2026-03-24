@@ -461,14 +461,4 @@ POST `/api/quiz`
 
 This project is open source for educational purposes.
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit issues and pull requests.
-
-## 📞 Support
-
-For support, please contact the development team or submit an issue in the repository.
-
----
-
 **Happy Learning! 🎓**

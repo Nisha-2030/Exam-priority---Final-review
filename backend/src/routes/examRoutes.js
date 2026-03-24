@@ -10,6 +10,7 @@ const {
   updateSubject,
   deleteSubject,
   getTopicsBySubject,
+  getTopicById,
   getHighMediumTopics,
   createTopic,
   updateTopic,
@@ -35,6 +36,7 @@ router.delete('/subjects/:id', authMiddleware, roleMiddleware(['admin']), delete
 
 // Topic routes
 router.get('/subjects/:subjectId/topics', getTopicsBySubject);
+router.get('/topics/:id', getTopicById);
 router.get('/subjects/:subjectId/topics/filtered', getHighMediumTopics);
 router.post('/topics', authMiddleware, roleMiddleware(['admin']), createTopic);
 router.put('/topics/:id', authMiddleware, roleMiddleware(['admin']), updateTopic);

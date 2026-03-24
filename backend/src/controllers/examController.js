@@ -154,6 +154,16 @@ const getTopicsBySubject = async (req, res) => {
   }
 };
 
+const getTopicById = async (req, res) => {
+  try {
+    const topic = await Topic.findById(req.params.id).populate('quizzes').populate('subject', 'name');
+    if (!topic) return res.status(404).json({ error: 'Topic not found' });
+    res.json(topic);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 const getHighMediumTopics = async (req, res) => {
   try {
     const topics = await Topic.find({
@@ -168,13 +178,14 @@ const getHighMediumTopics = async (req, res) => {
 
 const createTopic = async (req, res) => {
   try {
-    const { name, subject, priority, studyMaterial } = req.body;
+    const { name, subject, priority, studyMaterial, videos } = req.body;
 
     const topic = new Topic({
       name,
       subject,
       priority,
       studyMaterial,
+      videos: videos || [],
     });
 
     await topic.save();
@@ -190,13 +201,12 @@ const createTopic = async (req, res) => {
 
 const updateTopic = async (req, res) => {
   try {
-    const { name, priority, studyMaterial } = req.body;
+    const { name, priority, studyMaterial, videos } = req.body;
 
-    const topic = await Topic.findByIdAndUpdate(
-      req.params.id,
-      { name, priority, studyMaterial },
-      { new: true }
-    );
+    const update = { name, priority, studyMaterial };
+    if (videos !== undefined) update.videos = videos;
+
+    const topic = await Topic.findByIdAndUpdate(req.params.id, update, { new: true });
 
     if (!topic) {
       return res.status(404).json({ error: 'Topic not found' });
@@ -240,4 +250,5 @@ module.exports = {
   createTopic,
   updateTopic,
   deleteTopic,
+  getTopicById,
 };

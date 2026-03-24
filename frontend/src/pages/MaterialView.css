@@ -1,0 +1,47 @@
+.material-view-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.details-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.btn-back {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.material-content {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.download-btn {
+  background: #38a169;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.download-btn:hover {
+  background: #2f855a;
+}

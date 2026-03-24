@@ -2,8 +2,8 @@ import apiClient from './api';
 
 export const getStudentProgress = () => apiClient.get('/progress');
 export const getStudentProgressById = (studentId) => apiClient.get(`/progress/${studentId}`);
-export const markTopicComplete = (topicId) =>
-  apiClient.post(`/mark-complete/:${topicId}`, {});
+export const markTopicComplete = (studentId, topicId) =>
+  apiClient.post(`/mark-complete/${studentId}/${topicId}`, {});
 export const recordQuizAttempt = (topicId, data) =>
   apiClient.post(`/quiz-attempt/${topicId}`, data);
 export const updateTargetExam = (examId) =>

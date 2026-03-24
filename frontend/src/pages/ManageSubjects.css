@@ -1,6 +1,6 @@
 .manage-subjects-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--bg-gradient);
   padding: 2rem 0;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .back-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--accent);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -44,10 +44,11 @@
 
 .manage-content {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 2rem;
-  margin: 0 2rem 2rem 2rem;
-  max-width: 1400px;
+  grid-template-columns: minmax(420px, 1fr) minmax(560px, 1fr);
+  gap: 1.25rem;
+  margin: 0 auto 2rem;
+  width: calc(100% - 2rem);
+  max-width: 1680px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -85,13 +86,13 @@
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   padding: 1.5rem;
   border-radius: 10px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid var(--primary);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .subject-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 24px rgba(167, 111, 255, 0.3);
 }
 
 .subject-header {
@@ -108,7 +109,7 @@
 }
 
 .topic-count {
-  background: #667eea;
+  background: var(--primary);
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
@@ -123,7 +124,7 @@
 
 .btn-manage {
   flex: 1;
-  background: #667eea;
+  background: var(--primary);
   color: white;
   border: none;
   padding: 0.75rem;
@@ -172,18 +173,26 @@
   font-size: 1rem;
   font-family: inherit;
   box-sizing: border-box;
+  color: var(--text-dark);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder,
+.form-group select::placeholder {
+  color: var(--text-light);
+  opacity: 1;
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(163, 205, 209, 0.1);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #79c7e9 0%, #e79be5 100%);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;

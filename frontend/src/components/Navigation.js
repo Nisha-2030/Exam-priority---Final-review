@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navigation.css';
 import { useAuth } from '../context/AuthContext';
 
 const Navigation = () => {
   const { user, logout } = useAuth();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -14,21 +15,45 @@ const Navigation = () => {
     <nav className="navbar">
       <div className="nav-container">
         <div className="nav-logo">
-          <a href="/">📚 Exam Priority Portal</a>
+          <a href="/" className="logo-link">
+            <span className="logo-icon">📚</span>
+            <span className="logo-text">Exam Priority</span>
+          </a>
         </div>
-        <div className="nav-menu">
+
+        <button
+          className={`nav-toggle ${menuOpen ? 'active' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div className={`nav-menu ${menuOpen ? 'active' : ''}`}>
           {user ? (
-            <>
-              <span className="user-info">{user.name} ({user.role})</span>
-              <button onClick={handleLogout} className="logout-btn">
-                Logout
+            <div className="nav-user-section">
+              <div className="user-badge">
+                <span className="user-icon">👤</span>
+                <div className="user-info">
+                  <p className="user-name">{user.name}</p>
+                  <p className="user-role">{user.role}</p>
+                </div>
+              </div>
+              <button onClick={handleLogout} className="btn-logout">
+                <span>🚪</span> Logout
               </button>
-            </>
+            </div>
           ) : (
-            <>
-              <a href="/student-login">Student Login</a>
-              <a href="/admin-login">Admin Login</a>
-            </>
+            <div className="nav-auth-links">
+              <a href="/student-login" className="nav-link student-link">
+                <span>👨‍🎓</span> Student
+              </a>
+              <a href="/admin-login" className="nav-link admin-link">
+                <span>👨‍💼</span> Admin
+              </a>
+            </div>
           )}
         </div>
       </div>

@@ -20,6 +20,14 @@ const topicSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    videos: [
+      {
+        _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
+        title: { type: String, required: true },
+        url: { type: String, required: true },
+        duration: { type: String, default: '' },
+      },
+    ],
     quizzes: [
       {
         type: mongoose.Schema.Types.ObjectId,

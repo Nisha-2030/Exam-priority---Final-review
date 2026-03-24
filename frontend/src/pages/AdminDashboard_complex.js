@@ -370,7 +370,7 @@ const AdminDashboard = () => {
                         </div>
 
                         {selectedSubject === subject._id && (
-                          <div style={{ marginTop: '2rem', paddingLeft: '2rem', borderLeft: '3px solid #3498db' }}>
+                          <div style={{ marginTop: '2rem', paddingLeft: '2rem', borderLeft: '3px solid var(--accent)' }}>
                             <Card title={`➕ Add Topic to ${subject.name}`}>
                               <div className="form-group">
                                 <input

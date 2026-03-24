@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.register-wrapper {
+  --lav-1: #f1e9ff;
+  --lav-2: #d9c8ff;
+  --lav-3: #bfa6ff;
+  --lav-4: #9f84ff;
+  --ink: #111;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(circle at 15% 20%, #ffffff 0%, #f4efff 35%, transparent 60%),
+    radial-gradient(circle at 85% 10%, #ffffff 0%, #efe7ff 30%, transparent 55%),
+    radial-gradient(circle at 20% 80%, #ffffff 0%, #f7f3ff 35%, transparent 65%),
+    linear-gradient(180deg, #efe7ff 0%, #e6dcff 100%);
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  padding: 2.5rem 1.5rem;
+}
+
+.register-wrapper::before,
+.register-wrapper::after {
+  content: none;
+}
+
+.register-container {
+  position: relative;
+  z-index: 2;
+  width: min(92vw, 900px);
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 28px;
+  border: 1px solid rgba(180, 150, 255, 0.35);
+  box-shadow:
+    0 26px 60px rgba(80, 60, 120, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.register-info {
+  background: linear-gradient(135deg, #e1d2ff 0%, #c8b1ff 100%);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--ink);
+  position: relative;
+}
+
+.register-info::before,
+.register-info::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.register-info::before {
+  width: 210px;
+  height: 210px;
+  top: -40px;
+  left: -40px;
+}
+
+.register-info::after {
+  width: 140px;
+  height: 140px;
+  bottom: -30px;
+  right: -20px;
+}
+
+.register-info h2 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.register-info p {
+  margin: 0;
+  color: #2d2642;
+  font-size: 1rem;
+}
+
+.register-quote {
+  margin-top: 1.5rem;
+  background: linear-gradient(135deg, #d793ff 0%, #b88dff 100%);
+  border: 10px solid #ffffff;
+  border-radius: 22px;
+  padding: 2.2rem 1.6rem;
+  text-align: center;
+  color: #111;
+  box-shadow: 0 14px 30px rgba(120, 80, 190, 0.3);
+}
+
+.register-quote p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.register-card {
+  padding: 2.7rem 2.6rem 2.4rem;
+  text-align: left;
+}
+
+.register-card h2 {
+  margin: 0 0 0.4rem;
+  color: var(--ink);
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.register-subtitle {
+  margin: 0 0 1.5rem;
+  color: #3a334d;
+  font-size: 0.95rem;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.register-form input {
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid rgba(170, 150, 220, 0.35);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #faf9ff 0%, #f2edff 100%);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: 0 8px 16px rgba(120, 92, 198, 0.12);
+  transition: border 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.register-form input::placeholder {
+  color: #4a445d;
+}
+
+.register-form input:focus {
+  outline: none;
+  border: 1px solid rgba(159, 132, 255, 0.7);
+  box-shadow:
+    0 0 0 4px rgba(159, 132, 255, 0.18),
+    0 12px 20px rgba(120, 92, 198, 0.2);
+  transform: translateY(-1px);
+}
+
+.register-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+.register-form .checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink);
+  font-size: 0.85rem;
+  justify-content: flex-start;
+}
+
+.register-form .btn-submit {
+  margin-top: 1.4rem;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, #b799ff 0%, #8b6fff 100%);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  box-shadow: 0 12px 24px rgba(108, 78, 196, 0.28);
+}
+
+.register-form .btn-submit:hover {
+  background: linear-gradient(135deg, #c2adff 0%, #9a82ff 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(108, 78, 196, 0.32);
+}
+
+@media (max-width: 900px) {
+  .register-container {
+    grid-template-columns: 1fr;
+  }
+  .register-card {
+    text-align: center;
+  }
+  .register-row {
+    grid-template-columns: 1fr;
+  }
+  .register-info {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-card {
+    padding: 2rem 1.5rem;
+  }
+  .register-info {
+    padding: 2.2rem 1.5rem;
+  }
+  .register-wrapper {
+    padding: 1.5rem 1rem;
+  }
+}

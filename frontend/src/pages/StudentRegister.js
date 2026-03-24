@@ -1,87 +1,103 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import './Auth.css';
+import './RegisterPage.css';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const StudentRegister = () => {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [agree, setAgree] = useState(false);
   const navigate = useNavigate();
   const { register } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
+    if (!agree) {
+      alert('You must agree to the terms');
       return;
     }
-
-    setLoading(true);
     try {
-      await register(name, email, password);
+      const fullName = `${firstName} ${lastName}`.trim();
+      await register(fullName, email, password);
       navigate('/student-dashboard');
     } catch (err) {
-      setError(err || 'Registration failed');
-    } finally {
-      setLoading(false);
+      alert(err || 'Registration failed');
     }
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-box">
-        <h2>Student Registration</h2>
-        {error && <div className="error-message">{error}</div>}
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Full Name</label>
+    <div className="register-wrapper">
+      <div className="register-container">
+        <div className="register-info">
+          <h2>Welcome to student portal</h2>
+          <p>Create your account to get started</p>
+          <div className="register-quote">
+            <p>Nothing will work unless you do</p>
+          </div>
+        </div>
+        <div className="register-card">
+          <h2>Create Account</h2>
+          <p className="register-subtitle">Fill in your details below</p>
+          <form className="register-form" onSubmit={handleSubmit}>
             <input
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
-          </div>
-          <div className="form-group">
-            <label>Email</label>
+            <div className="register-row">
+              <input
+                type="text"
+                placeholder="First name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                placeholder="Last name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+            </div>
             <input
               type="email"
+              placeholder="E-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </div>
-          <div className="form-group">
-            <label>Password</label>
+            <input
+              type="tel"
+              placeholder="Phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
             <input
               type="password"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </div>
-          <div className="form-group">
-            <label>Confirm Password</label>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" disabled={loading} className="btn-submit">
-            {loading ? 'Registering...' : 'Register'}
-          </button>
-        </form>
-        <p className="auth-link">
-          Already have an account? <Link to="/student-login">Login here</Link>
-        </p>
+            <div className="checkbox-group">
+              <input
+                type="checkbox"
+                id="agree"
+                checked={agree}
+                onChange={(e) => setAgree(e.target.checked)}
+              />
+              <label htmlFor="agree">Agree with Terms & Conditions</label>
+            </div>
+            <button type="submit" className="btn-submit">Create account</button>
+          </form>
+        </div>
       </div>
     </div>
   );

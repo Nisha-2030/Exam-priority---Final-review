@@ -7,6 +7,8 @@ const authRoutes = require('./routes/authRoutes');
 const examRoutes = require('./routes/examRoutes');
 const quizRoutes = require('./routes/quizRoutes');
 const progressRoutes = require('./routes/progressRoutes');
+const materialRoutes = require('./routes/materialRoutes');
+const videoRoutes = require('./routes/videoRoutes');
 
 const app = express();
 
@@ -27,6 +29,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api', examRoutes);
 app.use('/api', quizRoutes);
 app.use('/api', progressRoutes);
+app.use('/api', materialRoutes);
+app.use('/api', videoRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

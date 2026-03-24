@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './ManageTopics.css';
-import Card from '../components/Card';
 import {
   getTopicsBySubject,
   createTopic,
@@ -39,6 +38,7 @@ const ManageTopics = () => {
       alert('Please enter topic name');
       return;
     }
+
     try {
       await createTopic({ name: topicForm.name, priority: topicForm.priority, subject: subjectId });
       setTopicForm({ name: '', priority: 'Medium' });
@@ -73,42 +73,50 @@ const ManageTopics = () => {
     <div className="manage-topics-container">
       <div className="manage-header">
         <button className="back-btn" onClick={() => window.history.back()}>
-          ← Back to Subjects
+          Back to Subjects
         </button>
-        <h1>📌 Manage Topics - {subjectName}</h1>
+        <h1>Manage Topics - {subjectName}</h1>
         <p>Create and organize topics for this subject</p>
       </div>
 
       <div className="manage-content">
         <div className="create-section">
-          <Card title="➕ Create New Topic">
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="Topic Name"
-                value={topicForm.name}
-                onChange={(e) => setTopicForm({ ...topicForm, name: e.target.value })}
-              />
+          <div className="create-panel">
+            <h2 className="section-title create-title">+ Create New Topic</h2>
+
+            <div className="create-form-block">
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Topic Name"
+                  value={topicForm.name}
+                  onChange={(e) => setTopicForm({ ...topicForm, name: e.target.value })}
+                />
+              </div>
             </div>
-            <div className="form-group">
-              <label>Priority Level</label>
-              <select
-                value={topicForm.priority}
-                onChange={(e) => setTopicForm({ ...topicForm, priority: e.target.value })}
-              >
-                <option value="High">🔴 High Priority</option>
-                <option value="Medium">🟡 Medium Priority</option>
-                <option value="Low">🟢 Low Priority</option>
-              </select>
+
+            <div className="create-form-block">
+              <div className="form-group">
+                <label>Priority Level</label>
+                <select
+                  value={topicForm.priority}
+                  onChange={(e) => setTopicForm({ ...topicForm, priority: e.target.value })}
+                >
+                  <option value="High">High Priority</option>
+                  <option value="Medium">Medium Priority</option>
+                  <option value="Low">Low Priority</option>
+                </select>
+              </div>
             </div>
+
             <button className="btn-primary btn-full" onClick={handleAddTopic}>
               Create Topic
             </button>
-          </Card>
+          </div>
         </div>
 
         <div className="list-section">
-          <h2>📚 All Topics</h2>
+          <h2 className="section-title topics-title">All Topics</h2>
           {topics.length > 0 ? (
             <div className="topics-grid">
               {topics.map((topic) => (
@@ -119,22 +127,18 @@ const ManageTopics = () => {
                       {topic.priority}
                     </span>
                   </div>
+
                   <div className="topic-info">
-                    <p>Material: {topic.hasStudyMaterial ? '✅' : '❌'}</p>
+                    <p>Material: <strong>{topic.hasStudyMaterial ? 'Yes' : 'No'}</strong></p>
                     <p>Videos: {topic.videos?.length || 0}</p>
                     <p>Quizzes: {topic.quizzes?.length || 0}</p>
                   </div>
+
                   <div className="topic-actions">
-                    <button 
-                      className="btn-edit"
-                      onClick={() => handleEditContent(topic._id)}
-                    >
-                      ✏️ Edit Content
+                    <button className="btn-edit" onClick={() => handleEditContent(topic._id)}>
+                      Edit Content
                     </button>
-                    <button 
-                      className="btn-delete"
-                      onClick={() => handleDeleteTopic(topic._id)}
-                    >
+                    <button className="btn-delete" onClick={() => handleDeleteTopic(topic._id)}>
                       Delete
                     </button>
                   </div>

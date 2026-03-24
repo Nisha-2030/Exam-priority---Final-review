@@ -1,5 +1,7 @@
 const Progress = require('../models/Progress');
 const User = require('../models/User');
+const Subject = require('../models/Subject');
+const Topic = require('../models/Topic');
 
 const getStudentProgress = async (req, res) => {
   try {
@@ -11,8 +13,29 @@ const getStudentProgress = async (req, res) => {
         populate: { path: 'subject' },
       });
 
-    const completedTopics = progress.filter((p) => p.isCompleted).length;
-    const totalTopics = progress.length;
+    const student = await User.findById(studentId).select('targetExam');
+    let totalTopics = 0;
+    let completedTopics = 0;
+
+    if (student?.targetExam) {
+      const subjects = await Subject.find({ exam: student.targetExam }).select('_id');
+      const subjectIds = subjects.map((s) => s._id);
+      const topics = await Topic.find({ subject: { $in: subjectIds } }).select('_id');
+      const topicIds = topics.map((t) => t._id);
+
+      totalTopics = topicIds.length;
+      completedTopics = await Progress.countDocuments({
+        student: studentId,
+        isCompleted: true,
+        topic: { $in: topicIds },
+      });
+    } else {
+      totalTopics = await Topic.countDocuments();
+      completedTopics = await Progress.countDocuments({
+        student: studentId,
+        isCompleted: true,
+      });
+    }
 
     res.json({
       completedTopics,

@@ -1,0 +1,235 @@
+.login-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 460px));
+  column-gap: 0;
+  row-gap: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, #efe6ff 0%, #e6d7ff 35%, #d8c2ff 100%);
+  justify-content: center;
+  align-content: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.login-wrapper::before {
+  content: '';
+  position: absolute;
+  width: min(920px, 92vw);
+  height: min(520px, 82vh);
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(70, 48, 120, 0.25);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+/* center the form card on the left column */
+.login-card {
+  width: min(460px, 88vw);
+  max-width: 90%;
+  margin: auto;
+  padding: 2.5rem 2.75rem;
+  background: #ffffff;
+  color: #111;
+  border-radius: 0 24px 24px 0;
+  box-shadow: none;
+  z-index: 1;
+  min-height: min(520px, 82vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.login-card h2, .login-card p {
+  color: #111;
+}
+.login-form input {
+  background: #f5f3fb;
+  color: #111;
+  border: 1px solid #d6c9f7;
+}
+.login-form input::placeholder {
+  color: #6b647a;
+}
+
+.login-info {
+  /* softer lavender gradient with decorative blobs added via pseudo-elements */
+  position: relative;
+  background: linear-gradient(135deg, #c7a4ff 0%, #eadbff 100%);
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 3rem 2rem;
+  overflow: hidden;
+  border-radius: 24px 0 0 24px;
+  z-index: 1;
+  width: min(460px, 88vw);
+  min-height: min(520px, 82vh);
+}
+
+/* blobs for extra flair */
+.login-info::before,
+.login-info::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+}
+.login-info::before {
+  width: 220px;
+  height: 220px;
+  top: -60px;
+  left: -40px;
+}
+.login-info::after {
+  width: 160px;
+  height: 160px;
+  bottom: -40px;
+  right: -30px;
+}
+
+.login-info h1,
+.login-info p {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.login-info h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.login-info p {
+  font-size: 1.1rem;
+  color: #1b1b1b;
+}
+
+.login-info h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.login-info p {
+  font-size: 1rem;
+}
+
+.login-illustration {
+  max-width: 320px;
+  width: 75%;
+  height: auto;
+  margin-top: 1.5rem;
+  border-radius: 18px;
+  box-shadow: 0 12px 24px rgba(40, 24, 72, 0.15);
+  background: #fff;
+  padding: 1rem;
+}
+
+/* simple form styling */
+.login-form .input-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.login-form .input-group .icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #6c5a8f;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c5a8f;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 0.75rem;
+  background: #b69cff;
+  color: #111;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.options input[type="checkbox"] {
+  margin: 0;
+}
+
+.options .forgot {
+  color: #5a526a;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.signup-redirect a {
+  color: #6b4fbf;
+  text-decoration: none;
+}
+
+.signup-redirect {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* responsive: stack for narrow screens */
+@media (max-width: 768px) {
+  .login-wrapper {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+  }
+  .login-info {
+    display: none; /* hide decorative panel on mobile */
+  }
+  .login-card {
+    width: 90%;
+    border-radius: 18px;
+  }
+}
+
+@media (min-width: 769px) {
+  .login-info {
+    order: 1;
+  }
+  .login-card {
+    order: 2;
+  }
+}

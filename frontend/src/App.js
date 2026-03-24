@@ -6,10 +6,14 @@ import StudentLogin from './pages/StudentLogin';
 import StudentRegister from './pages/StudentRegister';
 import AdminLogin from './pages/AdminLogin';
 import StudentDashboard from './pages/StudentDashboard';
+import StudentSubject from './pages/StudentSubject';
 import AdminDashboard from './pages/AdminDashboard';
 import ManageSubjects from './pages/ManageSubjects';
 import ManageTopics from './pages/ManageTopics';
 import ManageContent from './pages/ManageContent';
+import MaterialDetails from './pages/MaterialDetails';
+import QuizPage from './pages/QuizPage';
+import MaterialView from './pages/MaterialView';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import './App.css';
 
@@ -52,6 +56,15 @@ function App() {
           />
 
           <Route
+            path="/student-subject/:subjectId"
+            element={
+              <ProtectedRoute allowedRoles={['student']}>
+                <StudentSubject />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
             path="/admin-dashboard"
             element={
               <ProtectedRoute allowedRoles={['admin']}>
@@ -83,6 +96,32 @@ function App() {
             element={
               <ProtectedRoute allowedRoles={['admin']}>
                 <ManageContent />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/materials/:topicId"
+            element={
+              <ProtectedRoute allowedRoles={['student']}>
+                <MaterialDetails />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/quiz/:topicId"
+            element={
+              <ProtectedRoute allowedRoles={['student']}>
+                <QuizPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/material/:materialId"
+            element={
+              <ProtectedRoute allowedRoles={['student']}>
+                <MaterialView />
               </ProtectedRoute>
             }
           />

@@ -2,12 +2,12 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #f5f5f5;
+  background: var(--bg-gradient);
   min-height: 100vh;
 }
 
 .admin-header {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  background: var(--accent-gradient);
   color: white;
   padding: 2rem;
   border-radius: 8px;
@@ -33,24 +33,25 @@
   border-bottom: 2px solid #bdc3c7;
 }
 
-.tab-btn {
+.admin-dashboard .tab-btn {
   padding: 1rem 1.5rem;
   background: none;
   border: none;
   border-bottom: 3px solid transparent;
   cursor: pointer;
   font-size: 1rem;
-  color: #7f8c8d;
+  color: #2c3e50;          /* darker text for visibility */
+  font-weight: 600;
   transition: all 0.3s;
 }
 
-.tab-btn:hover {
+.admin-dashboard .tab-btn:hover {
   color: #2c3e50;
 }
 
-.tab-btn.active {
-  color: #3498db;
-  border-bottom-color: #3498db;
+.admin-dashboard .tab-btn.active {
+  color: var(--accent-dark);      /* use darker lavender for active state */
+  border-bottom-color: var(--accent-dark);
 }
 
 .admin-content {
@@ -60,9 +61,19 @@
 }
 
 .exams-section {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(520px, 1.5fr);
   gap: 2rem;
+  align-items: start;
+}
+
+.exams-section > .card {
+  margin-bottom: 0;
+}
+
+.exams-section > .card:first-child {
+  position: sticky;
+  top: 1.5rem;
 }
 
 .form-group {
@@ -90,12 +101,12 @@
 .form-group textarea:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(106, 79, 176, 0.1);
 }
 
 .btn-primary {
-  background-color: #3498db;
+  background-color: var(--accent);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -106,7 +117,7 @@
 }
 
 .btn-primary:hover {
-  background-color: #2980b9;
+  background-color: var(--accent-dark);
 }
 
 .exam-list-admin,
@@ -124,9 +135,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #f8f9fa;
+  background-color: var(--card-bg);
   border-radius: 8px;
-  border-left: 4px solid #3498db;
+  border-left: 4px solid var(--accent);
 }
 
 .exam-item-admin h4,
@@ -175,12 +186,12 @@
 }
 
 .btn-view {
-  background-color: #3498db;
+  background-color: var(--accent);
   color: white;
 }
 
 .btn-view:hover {
-  background-color: #2980b9;
+  background-color: var(--accent-dark);
 }
 
 .btn-danger {
@@ -193,12 +204,12 @@
 }
 
 .btn-success {
-  background-color: #27ae60;
+  background-color: #986397;
   color: white;
 }
 
 .btn-success:hover {
-  background-color: #229954;
+  background-color: #3bafcf;
 }
 
 .priority-badge {
@@ -212,15 +223,15 @@
 }
 
 .priority-badge.high {
-  background-color: #e74c3c;
+  background-color: #baead6;
 }
 
 .priority-badge.medium {
-  background-color: #f39c12;
+  background-color: #f1ddbb;
 }
 
 .priority-badge.low {
-  background-color: #95a5a6;
+  background-color: #efafa8;
 }
 
 .students-table {
@@ -273,7 +284,7 @@
 }
 
 .status-badge.active {
-  background-color: #27ae60;
+  background-color: #1ed196;
 }
 
 .status-badge.blocked {
@@ -332,6 +343,14 @@
 }
 
 @media (max-width: 768px) {
+  .exams-section {
+    grid-template-columns: 1fr;
+  }
+
+  .exams-section > .card:first-child {
+    position: static;
+  }
+
   .admin-tabs {
     flex-direction: column;
   }
