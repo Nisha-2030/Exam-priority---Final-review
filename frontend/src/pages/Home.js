@@ -50,7 +50,7 @@ const Home = () => {
           
           <p className="hero-subtitle">
             Exam Priority Digital Immersive Skill Training Portal - 
-            Prepare smart with AI-powered priority topics and adaptive learning paths
+            Prepare smart with priority topics and adaptive learning paths
           </p>
 
           <div className="hero-stats">

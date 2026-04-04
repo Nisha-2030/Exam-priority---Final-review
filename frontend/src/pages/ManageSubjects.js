@@ -5,8 +5,7 @@ import Card from '../components/Card';
 import {
   getSubjectsByExam,
   createSubject,
-  deleteSubject,
-  getTopicsBySubject
+  deleteSubject
 } from '../services/examService';
 
 const ManageSubjects = () => {
@@ -67,23 +66,23 @@ const ManageSubjects = () => {
   };
 
   if (loading) {
-    return <div className="manage-loading">Loading...</div>;
+    return <div className="manage-subjects-loading">Loading...</div>;
   }
 
   return (
     <div className="manage-subjects-container">
-      <div className="manage-header">
-        <button className="back-btn" onClick={() => navigate('/admin-dashboard')}>
-          ← Back to Dashboard
+      <div className="manage-subjects-header">
+        <button className="manage-subjects-back-btn" onClick={() => navigate('/admin-dashboard')}>
+          Back to Dashboard
         </button>
-        <h1>📚 Manage Subjects - {examName}</h1>
+        <h1>Manage Subjects - {examName}</h1>
         <p>Create and manage subjects for this exam</p>
       </div>
 
-      <div className="manage-content">
-        <div className="create-section">
-          <Card title="➕ Create New Subject">
-            <div className="form-group">
+      <div className="manage-subjects-content">
+        <div className="manage-subjects-create-section">
+          <Card title="Create New Subject" className="manage-subjects-create-card">
+            <div className="manage-subjects-form-group">
               <input
                 type="text"
                 placeholder="Subject Name (e.g., Maths, English, Reasoning)"
@@ -91,44 +90,45 @@ const ManageSubjects = () => {
                 onChange={(e) => setSubjectForm({ name: e.target.value })}
               />
             </div>
-            <button className="btn-primary btn-full" onClick={handleAddSubject}>
+            <button className="manage-subjects-btn-primary manage-subjects-btn-full" onClick={handleAddSubject}>
               Create Subject
             </button>
           </Card>
         </div>
 
-        <div className="list-section">
-          <h2>📖 All Subjects</h2>
-          {subjects.length > 0 ? (
-            <div className="subjects-grid">
-              {subjects.map((subject) => (
-                <div key={subject._id} className="subject-card">
-                  <div className="subject-header">
-                    <h3>{subject.name}</h3>
-                    <span className="topic-count">{subject.topics?.length || 0} Topics</span>
+        <div className="manage-subjects-list-section">
+          <Card title="All Subjects" className="manage-subjects-list-card">
+            {subjects.length > 0 ? (
+              <div className="manage-subjects-list">
+                {subjects.map((subject) => (
+                  <div key={subject._id} className="manage-subject-item">
+                    <div className="manage-subject-item-info">
+                      <h3>{subject.name}</h3>
+                      <p>{subject.topics?.length || 0} topics</p>
+                    </div>
+                    <div className="manage-subject-item-actions">
+                      <button
+                        className="manage-subjects-btn-manage"
+                        onClick={() => handleManageTopic(subject._id)}
+                      >
+                        Manage Topics
+                      </button>
+                      <button
+                        className="manage-subjects-btn-delete"
+                        onClick={() => handleDeleteSubject(subject._id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
-                  <div className="subject-actions">
-                    <button 
-                      className="btn-manage"
-                      onClick={() => handleManageTopic(subject._id)}
-                    >
-                      📌 Manage Topics
-                    </button>
-                    <button 
-                      className="btn-delete"
-                      onClick={() => handleDeleteSubject(subject._id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="empty-state">
-              <p>No subjects yet. Create one to get started!</p>
-            </div>
-          )}
+                ))}
+              </div>
+            ) : (
+              <div className="manage-subjects-empty-state">
+                <p>No subjects yet. Create one to get started!</p>
+              </div>
+            )}
+          </Card>
         </div>
       </div>
     </div>

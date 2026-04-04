@@ -14,6 +14,7 @@ import ManageContent from './pages/ManageContent';
 import MaterialDetails from './pages/MaterialDetails';
 import QuizPage from './pages/QuizPage';
 import MaterialView from './pages/MaterialView';
+import AdminMaterialView from './pages/AdminMaterialView';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import './App.css';
 
@@ -122,6 +123,15 @@ function App() {
             element={
               <ProtectedRoute allowedRoles={['student']}>
                 <MaterialView />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/admin/material/:materialId"
+            element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <AdminMaterialView />
               </ProtectedRoute>
             }
           />

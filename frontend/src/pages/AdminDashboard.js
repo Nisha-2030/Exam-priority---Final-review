@@ -133,24 +133,26 @@ const AdminDashboard = () => {
       <div className="admin-content">
         {activeTab === 'exams' && (
           <div className="exams-section">
-            <Card title="➕ Create New Exam">
-              <div className="form-group">
+            <Card title="➕ Create New Exam" className="create-exam-card">
+              <div className="form-group exam-form-group">
                 <input
+                  className="exam-name-input"
                   type="text"
                   placeholder="Exam Name (e.g., RRB, TNPSC, SSC, Banking)"
                   value={examForm.name}
                   onChange={(e) => setExamForm({ ...examForm, name: e.target.value })}
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group exam-form-group">
                 <textarea
+                  className="exam-description-input"
                   placeholder="Description"
                   value={examForm.description}
                   onChange={(e) => setExamForm({ ...examForm, description: e.target.value })}
-                  rows="3"
+                  rows="8"
                 ></textarea>
               </div>
-              <button className="btn-primary" onClick={handleAddExam}>
+              <button className="btn-primary create-exam-btn" onClick={handleAddExam}>
                 Create Exam
               </button>
             </Card>

@@ -294,10 +294,11 @@ const ManageContent = () => {
         </button>
       </div>
 
-      <div className="manage-content">
+      <div className="manage-content-body">
+        <div className="manage-content-stage">
         {/* ============ MATERIALS TAB ============ */}
         {activeTab === 'material' && (
-          <div className="tab-content split-tab-layout">
+          <div className="tab-content split-tab-layout aligned-layout">
             <Card title="➕ Add New Material">
               <div className="form-group">
                 <label>Material Title</label>
@@ -351,7 +352,11 @@ const ManageContent = () => {
                     <div
                       key={material._id}
                       className="item-card"
-                      onClick={() => navigate(`/material/${material._id}`)}
+                      onClick={() =>
+                        navigate(`/admin/material/${material._id}`, {
+                          state: { topicId }
+                        })
+                      }
                       style={{ cursor: 'pointer' }}
                     >
                       <div className="item-header">
@@ -388,7 +393,7 @@ const ManageContent = () => {
 
         {/* ============ VIDEOS TAB ============ */}
         {activeTab === 'videos' && (
-          <div className="tab-content split-tab-layout">
+          <div className="tab-content split-tab-layout aligned-layout">
             <Card title="➕ Add New Video">
               <div className="form-group">
                 <label>Video Title</label>
@@ -474,7 +479,7 @@ const ManageContent = () => {
 
         {/* ============ QUIZZES TAB ============ */}
         {activeTab === 'quizzes' && (
-          <div className="quiz-tab-modern-layout">
+          <div className="quiz-tab-modern-layout aligned-layout">
             <div className="quiz-form-modern">
               <Card title={<span><span style={{color:'#8f5be8',fontWeight:700,fontSize:'1.3rem'}}>➕</span> <span style={{fontWeight:700}}>Create New Quiz</span></span>}>
                 <div className="form-group">
@@ -615,6 +620,7 @@ const ManageContent = () => {
             </div>
           </div>
         )}
+        </div>
       </div>
     </div>
   );
