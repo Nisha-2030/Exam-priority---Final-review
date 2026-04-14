@@ -26,7 +26,7 @@
   box-sizing: border-box;
   background: var(--accent-gradient);
   color: white;
-  padding: 1rem;
+  padding: 2rem 1rem;
   border-radius: 8px;
   margin-bottom: 1.25rem;
   box-shadow: 0 12px 30px rgba(106, 79, 176, 0.2);
@@ -48,7 +48,7 @@
   line-height: 1.35;
 }
 
-.btn-back {
+.subject-header .btn-back {
   background-color: #ffffff;
   color: #2c3e50;
   padding: 0.55rem 1rem;
@@ -62,10 +62,12 @@
   white-space: nowrap;
   flex: 0 0 auto;
   align-self: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn-back:hover {
-  background-color: #f2f2f2;
+.subject-header .btn-back:hover {
+  background: #c7b5ff;
+  color: #2c3e50;
 }
 
 .subject-main-content {
@@ -77,6 +79,15 @@
   z-index: 1;
 }
 
+.subject-overview {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.9rem;
+}
+
 .subject-dashboard .card {
   width: 100%;
   box-sizing: border-box;
@@ -85,6 +96,22 @@
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 10px 24px rgba(31, 42, 68, 0.08);
+}
+
+.subject-dashboard .subject-progress-card,
+.subject-dashboard .subject-topics-card {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.subject-overview > .subject-overview-card {
+  flex: 0 0 100%;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
 }
 
 .subject-dashboard .card-title {
@@ -220,7 +247,7 @@
     row-gap: 0.75rem;
   }
 
-  .btn-back {
+  .subject-header .btn-back {
     width: 100%;
     min-width: 0;
   }

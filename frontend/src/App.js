@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import StudentLogin from './pages/StudentLogin';
 import StudentRegister from './pages/StudentRegister';
 import AdminLogin from './pages/AdminLogin';
+import About from './pages/About';
+import FAQ from './pages/FAQ';
 import StudentDashboard from './pages/StudentDashboard';
 import StudentSubject from './pages/StudentSubject';
 import AdminDashboard from './pages/AdminDashboard';
@@ -43,6 +45,8 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/student-login" element={<StudentLogin />} />
           <Route path="/student-register" element={<StudentRegister />} />
           <Route path="/admin-login" element={<AdminLogin />} />

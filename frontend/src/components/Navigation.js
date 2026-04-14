@@ -32,6 +32,10 @@ const Navigation = () => {
         </button>
 
         <div className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+          <div className="nav-main-links">
+            <a href="/about" className="nav-link">About</a>
+            <a href="/faq" className="nav-link">FAQ</a>
+          </div>
           {user ? (
             <div className="nav-user-section">
               <div className="user-badge">

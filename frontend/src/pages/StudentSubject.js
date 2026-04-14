@@ -143,49 +143,51 @@ const StudentSubject = () => {
         </button>
       </div>
 
-      <Card title="Subject Progress">
-        <ProgressBar completed={subjectCompletedTopics} total={subjectTotalTopics} />
-        <p>
-          Completed Topics: <strong>{subjectCompletedTopics}</strong> / {subjectTotalTopics}
-        </p>
-      </Card>
-
-      {topics.length > 0 && (
-        <Card title="Topics (High & Medium Priority)">
-          <div className="topic-list">
-            {topics.map((topic) => (
-              <div key={topic._id} className="topic-item">
-                <div className="topic-header">
-                  <h4>{topic.name}</h4>
-                  <span className={`priority-badge ${topic.priority.toLowerCase()}`}>
-                    {topic.priority}
-                  </span>
-                </div>
-                <div className="topic-buttons">
-                  <button
-                    className="btn-small btn-view"
-                    onClick={() => openMaterialPage(topic._id)}
-                  >
-                    View Material
-                  </button>
-                  {completedTopicIds.has(topic._id) ? (
-                    <button className="btn-small btn-complete" disabled>
-                      Completed
-                    </button>
-                  ) : (
-                    <button
-                      className="btn-small btn-complete"
-                      onClick={() => handleMarkComplete(topic._id)}
-                    >
-                      Mark Complete
-                    </button>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="subject-overview">
+        <Card title="Subject Progress" className="subject-overview-card subject-progress-card">
+          <ProgressBar completed={subjectCompletedTopics} total={subjectTotalTopics} />
+          <p>
+            Completed Topics: <strong>{subjectCompletedTopics}</strong> / {subjectTotalTopics}
+          </p>
         </Card>
-      )}
+
+        {topics.length > 0 && (
+          <Card title="Topics (High & Medium Priority)" className="subject-overview-card subject-topics-card">
+            <div className="topic-list">
+              {topics.map((topic) => (
+                <div key={topic._id} className="topic-item">
+                  <div className="topic-header">
+                    <h4>{topic.name}</h4>
+                    <span className={`priority-badge ${topic.priority.toLowerCase()}`}>
+                      {topic.priority}
+                    </span>
+                  </div>
+                  <div className="topic-buttons">
+                    <button
+                      className="btn-small btn-view"
+                      onClick={() => openMaterialPage(topic._id)}
+                    >
+                      View Material
+                    </button>
+                    {completedTopicIds.has(topic._id) ? (
+                      <button className="btn-small btn-complete" disabled>
+                        Completed
+                      </button>
+                    ) : (
+                      <button
+                        className="btn-small btn-complete"
+                        onClick={() => handleMarkComplete(topic._id)}
+                      >
+                        Mark Complete
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        )}
+      </div>
 
       <div className="subject-main-content">
         {selectedTopic && !showQuiz && (

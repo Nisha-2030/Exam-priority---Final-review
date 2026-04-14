@@ -107,7 +107,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="features-section">
+      <section id="features" className="features-section">
         <div className="section-header">
           <h2>Why Choose Us?</h2>
           <p>Everything you need to excel in competitive exams</p>
@@ -159,7 +159,7 @@ const Home = () => {
       </section>
 
       {/* Exams Section */}
-      <section className="exams-section">
+      <section id="exams" className="exams-section">
         <div className="section-header exams-header">
           <h2>Supported Exams</h2>
           <p>Exam Details</p>
@@ -246,15 +246,14 @@ const Home = () => {
             <ul>
               <li><a href="#features">Features</a></li>
               <li><a href="#exams">Exams</a></li>
-              <li><a href="#about">About</a></li>
+              <li><a href="/about">About</a></li>
             </ul>
           </div>
           <div className="footer-section">
-            <h4>Support</h4>
+            <h4>Help Center</h4>
             <ul>
-              <li><a href="#help">Help Center</a></li>
-              <li><a href="#contact">Contact Us</a></li>
-              <li><a href="#faq">FAQ</a></li>
+              <li><a href="/about">Contact Us</a></li>
+              <li><a href="/faq">FAQ</a></li>
             </ul>
           </div>
         </div>

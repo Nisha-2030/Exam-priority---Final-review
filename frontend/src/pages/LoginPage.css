@@ -171,6 +171,14 @@
   cursor: pointer;
   font-weight: 600;
   letter-spacing: 0.2px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.btn-login:hover {
+  background: #7f4ed6;
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(127, 78, 214, 0.35);
+  transform: translateY(-2px);
 }
 
 .options {

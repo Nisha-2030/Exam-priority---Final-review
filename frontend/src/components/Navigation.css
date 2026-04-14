@@ -210,6 +210,25 @@
   background: rgba(214, 143, 255, 0.35);
 }
 
+/* ============ MAIN NAV LINKS ============ */
+.nav-main-links {
+  display: flex;
+  gap: 1rem;
+  margin-right: auto;
+}
+
+.nav-main-links .nav-link {
+  background: rgba(255, 255, 255, 0.15);
+  color: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9rem;
+}
+
+.nav-main-links .nav-link:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #1a1a2e;
+}
+
 /* ============ RESPONSIVE DESIGN ============ */
 @media (max-width: 768px) {
   .nav-toggle {
@@ -242,6 +261,18 @@
   .nav-auth-links {
     width: 100%;
     flex-direction: column;
+  }
+
+  .nav-main-links {
+    width: 100%;
+    flex-direction: column;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .nav-main-links .nav-link {
+    width: 100%;
+    justify-content: center;
   }
 
   .user-badge,

@@ -32,8 +32,8 @@
   font-size: 1.1rem;
 }
 
-.btn-back {
-  background: linear-gradient(90deg, #a1c4fd 60%, #c2e9fb 100%);
+.quiz-page-container .btn-back {
+  background: #ffffff;
   color: #2c3e50;
   border: none;
   padding: 0.7rem 1.4rem;
@@ -42,11 +42,11 @@
   font-weight: 600;
   white-space: nowrap;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(120, 140, 180, 0.06);
+  box-shadow: 0 6px 16px rgba(31, 42, 68, 0.12);
 }
-.btn-back:hover {
-  background: linear-gradient(90deg, #c2e9fb 60%, #a1c4fd 100%);
-  color: #3a4668;
+.quiz-page-container .btn-back:hover {
+  background: #c7b5ff;
+  color: #2c3e50;
   transform: translateX(-2px) scale(1.03);
 }
 
