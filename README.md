@@ -241,29 +241,6 @@ Frontend will open at: **http://localhost:3000**
 | PUT | `/api/students/:studentId/unblock` | Unblock student | Admin |
 | DELETE | `/api/students/:studentId` | Delete student | Admin |
 
-## 🛡️ Default Admin Credentials
-
-To create an admin account manually in MongoDB:
-
-```javascript
-// Connect to MongoDB
-use exam-priority
-
-// Insert admin user (password: admin123)
-db.users.insertOne({
-  name: "Admin User",
-  email: "admin@example.com",
-  password: "$2a$10$...", // Hash of 'admin123' using bcrypt
-  role: "admin",
-  isBlocked: false,
-  targetExam: null,
-  createdAt: new Date(),
-  updatedAt: new Date()
-})
-```
-
-Or use the app's registration and then manually update the role in MongoDB.
-
 ## 📊 Database Schema
 
 ### User Collection
@@ -440,10 +417,6 @@ POST `/api/quiz`
 - Or use MongoDB Atlas cloud: `mongodb+srv://user:pass@cluster.mongodb.net/exam-priority`
 - Check MongoDB service is running
 
-### Quiz/Topic not appearing
-- Ensure admin has created exam → subject → topic → quiz
-- Verify topic priority is "High" or "Medium" (students only see these)
-
 ## 📈 Future Enhancements
 
 - [ ] AI-based doubt clarification system
@@ -451,7 +424,6 @@ POST `/api/quiz`
 - [ ] Performance analytics and insights
 - [ ] Adaptive learning paths
 - [ ] Discussion forum
-- [ ] Video tutorials
 - [ ] Mobile app (React Native)
 - [ ] Email notifications
 - [ ] Payment integration for premium content
