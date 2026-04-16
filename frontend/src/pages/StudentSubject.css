@@ -2,6 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 1.5rem;
+  padding-top: 110px;
   background: var(--bg-gradient);
   min-height: 100vh;
   position: relative;
@@ -24,10 +25,11 @@
   column-gap: 1.25rem;
   width: 100%;
   box-sizing: border-box;
-  background: var(--accent-gradient);
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
   color: white;
   padding: 2rem 1rem;
   border-radius: 8px;
+  margin-top: 1.5rem;
   margin-bottom: 1.25rem;
   box-shadow: 0 12px 30px rgba(106, 79, 176, 0.2);
   position: relative;
@@ -202,12 +204,12 @@
 }
 
 .btn-view {
-  background-color: var(--accent);
-  color: #1a1a2e;
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
+  color: white;
 }
 
 .btn-view:hover {
-  background-color: var(--accent-dark);
+  background: linear-gradient(135deg, #b876d9 0%, #ada5e3 100%);
   color: #fff;
 }
 

@@ -2,12 +2,13 @@
   min-height: 100vh;
   background: var(--bg-gradient);
   padding: 2rem 0;
+  padding-top: 110px;
   overflow-x: hidden;
 }
 
 .manage-content-container .manage-header {
   max-width: 1560px;
-  margin: 0 auto 1.5rem;
+  margin: 1.5rem auto 1.5rem;
   padding: 1.5rem 2rem;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 14px;
@@ -15,7 +16,7 @@
 }
 
 .manage-content-container .back-btn {
-  background: #8f5be8;
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -152,8 +153,8 @@
 .manage-content-container .question-item-modern textarea:focus,
 .manage-content-container .question-item-modern select:focus {
   outline: none;
-  border-color: #8f5be8;
-  box-shadow: 0 0 0 3px rgba(143, 91, 232, 0.14);
+  border-color: #c489e2;
+  box-shadow: 0 0 0 3px rgba(196, 137, 226, 0.14);
 }
 
 .manage-content-container .btn-primary,
@@ -173,7 +174,7 @@
 }
 
 .manage-content-container .btn-primary {
-  background: linear-gradient(90deg, #8f5be8 0%, #b39ae8 100%);
+  background: linear-gradient(90deg, #c489e2 0%, #bea8ec 100%);
   padding: 0.85rem 1rem;
   font-size: 1rem;
 }
@@ -281,7 +282,7 @@
 }
 
 .manage-content-container .btn-view {
-  background: #8f5be8;
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
   padding: 0.72rem 1rem;
   font-size: 1rem;
 }

@@ -8,6 +8,7 @@
   background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
   font-family: 'Poppins', sans-serif;
   padding: 2.5rem 2rem;
+  padding-top: 110px;
 }
 
 .side-panel {
@@ -117,8 +118,8 @@
   margin-top: 0.5rem;
 }
 .btn-view {
-  background: var(--accent);
-  color: #1a1a2e;
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
+  color: white;
   border: none;
   border-radius: 6px;
   padding: 0.5rem 1.1rem;
@@ -127,7 +128,7 @@
   transition: background 0.3s;
 }
 .btn-view:hover {
-  background: var(--accent-dark);
+  background: linear-gradient(135deg, #b876d9 0%, #ada5e3 100%);
   color: #fff;
 }
 .btn-delete {

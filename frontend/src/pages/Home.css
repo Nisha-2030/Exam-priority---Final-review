@@ -102,6 +102,7 @@
   overflow-x: hidden;
   background: var(--bg-gradient);
   position: relative;
+  padding-top: 110px;
 }
 
 .home-container section[id] {
@@ -532,7 +533,7 @@
 
 .feature-highlight {
   display: inline-block;
-  background: var(--accent-gradient);
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
   color: white;
   padding: 0.4rem 1rem;
   border-radius: 50px;
@@ -755,13 +756,13 @@
 }
 
 .cta-content {
-  background: var(--primary-gradient);
+  background: linear-gradient(135deg, #d8aded 0%, #bea8ec 100%);
   padding: 4rem;
   border-radius: 20px;
   color: white;
   max-width: 800px;
   margin: 0 auto;
-  box-shadow: 0 20px 60px rgba(167, 111, 255, 0.3);
+  box-shadow: 0 20px 60px rgba(196, 137, 226, 0.3);
   animation: fadeInUp 0.8s ease;
 }
 

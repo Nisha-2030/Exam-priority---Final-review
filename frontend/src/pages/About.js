@@ -92,8 +92,8 @@ const About = () => {
         <h2>Get In Touch</h2>
         <p>Have questions? We'd love to hear from you!</p>
         <div className="contact-info">
-          <p><strong>Email:</strong> support@exampriorityportal.com</p>
-          <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+          <p><strong>Email:</strong> nishanthiniselladurai30@gmail.com</p>
+          <p><strong>Phone:</strong> 8807281872</p>
           <p><strong>Address:</strong> 123 Learning Street, Education City, ED 12345</p>
         </div>
       </section>

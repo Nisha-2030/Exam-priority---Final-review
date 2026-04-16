@@ -4,11 +4,12 @@
   background: linear-gradient(135deg, #f5f7fa 0%, #e4ebf5 50%, #f5f7fa 100%);
   color: #1a1a2e;
   overflow-x: hidden;
+  padding-top: 110px;
 }
 
 /* Hero Section */
 .faq-hero {
-  background: linear-gradient(135deg, #a76fff 0%, #d4bfff 100%);
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
   padding: 6rem 2rem;
   text-align: center;
   position: relative;
@@ -69,12 +70,12 @@
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #a76fff, #d4bfff);
+  background: linear-gradient(135deg, #c489e2, #bea8ec);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   padding-left: 1rem;
-  border-left: 4px solid #a76fff;
+  border-left: 4px solid #c489e2;
 }
 
 /* Accordion */
@@ -86,7 +87,7 @@
 
 .accordion-item {
   background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(167, 111, 255, 0.2);
+  border: 1px solid rgba(196, 137, 226, 0.2);
   border-radius: 0.75rem;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -94,12 +95,12 @@
 }
 
 .accordion-item:hover {
-  border-color: rgba(167, 111, 255, 0.4);
+  border-color: rgba(196, 137, 226, 0.4);
   background: #f9f5ff;
 }
 
 .accordion-item.active {
-  border-color: rgba(167, 111, 255, 0.6);
+  border-color: rgba(196, 137, 226, 0.6);
   background: #f5f1ff;
 }
 
@@ -118,11 +119,11 @@
 }
 
 .accordion-header:hover {
-  background: rgba(167, 111, 255, 0.05);
+  background: rgba(196, 137, 226, 0.05);
 }
 
 .accordion-item.active .accordion-header {
-  background: rgba(167, 111, 255, 0.08);
+  background: rgba(196, 137, 226, 0.08);
 }
 
 .accordion-title {
@@ -133,12 +134,12 @@
 }
 
 .accordion-item.active .accordion-title {
-  color: #a76fff;
+  color: #c489e2;
 }
 
 .accordion-icon {
   font-size: 1.5rem;
-  color: #a76fff;
+  color: #c489e2;
   font-weight: bold;
   min-width: 2rem;
   text-align: center;
@@ -146,7 +147,7 @@
 }
 
 .accordion-item.active .accordion-icon {
-  color: #a76fff;
+  color: #c489e2;
 }
 
 .accordion-body {

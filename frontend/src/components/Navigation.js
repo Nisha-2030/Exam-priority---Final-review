@@ -1,14 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Navigation.css';
 import { useAuth } from '../context/AuthContext';
 
 const Navigation = () => {
   const { user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const handleLogout = () => {
     logout();
     window.location.href = '/';
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Close dropdown when a link is clicked
+  const handleDropdownLinkClick = () => {
+    setDropdownOpen(false);
   };
 
   return (
@@ -32,10 +51,6 @@ const Navigation = () => {
         </button>
 
         <div className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-          <div className="nav-main-links">
-            <a href="/about" className="nav-link">About</a>
-            <a href="/faq" className="nav-link">FAQ</a>
-          </div>
           {user ? (
             <div className="nav-user-section">
               <div className="user-badge">
@@ -59,6 +74,36 @@ const Navigation = () => {
               </a>
             </div>
           )}
+
+          {/* Three Line Menu */}
+          <div className="nav-dropdown-menu" ref={dropdownRef}>
+            <button
+              className="nav-dropdown-btn"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              aria-label="More options"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <div className={`nav-dropdown-content ${dropdownOpen ? 'active' : ''}`}>
+              <a href="#features" className="dropdown-link" onClick={handleDropdownLinkClick}>
+                ✨ Features
+              </a>
+              <a href="#exams" className="dropdown-link" onClick={handleDropdownLinkClick}>
+                📝 Exams
+              </a>
+              <a href="/about" className="dropdown-link" onClick={handleDropdownLinkClick}>
+                ℹ️ About
+              </a>
+              <a href="/faq" className="dropdown-link" onClick={handleDropdownLinkClick}>
+                ❓ FAQ
+              </a>
+              <a href="/about" className="dropdown-link" onClick={handleDropdownLinkClick}>
+                📞 Contact
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </nav>

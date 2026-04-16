@@ -2,15 +2,17 @@
   max-width: 1560px;
   margin: 0 auto;
   padding: 2rem;
+  padding-top: 110px;
   background: var(--bg-gradient);
   min-height: 100vh;
 }
 
 .admin-header {
-  background: var(--accent-gradient);
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
   color: white;
   padding: 2rem;
   border-radius: 8px;
+  margin-top: 1.5rem;
   margin-bottom: 2rem;
 }
 
@@ -215,12 +217,12 @@
 }
 
 .btn-view {
-  background-color: var(--accent);
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
   color: white;
 }
 
 .btn-view:hover {
-  background-color: var(--accent-dark);
+  background: linear-gradient(135deg, #b876d9 0%, #ada5e3 100%);
 }
 
 .btn-danger {

@@ -2,11 +2,12 @@
   min-height: 100vh;
   background: var(--bg-gradient);
   padding: 2rem 0;
+  padding-top: 110px;
 }
 
 .manage-topics-header {
   max-width: 1560px;
-  margin: 0 auto 1.5rem;
+  margin: 1.5rem auto 1.5rem;
   padding: 1.5rem 2rem;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 14px;
@@ -103,7 +104,7 @@
 }
 
 .manage-topics-btn-primary {
-  background: linear-gradient(90deg, #8f5be8 0%, #b39ae8 100%);
+  background: linear-gradient(90deg, #c489e2 0%, #bea8ec 100%);
   padding: 0.9rem 1rem;
   font-size: 1rem;
 }
