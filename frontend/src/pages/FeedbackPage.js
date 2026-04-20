@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getTopicById } from '../services/examService';
 import FeedbackComponent from '../components/FeedbackComponent';
@@ -22,9 +22,9 @@ const FeedbackPage = () => {
 
   useEffect(() => {
     loadTopicData();
-  }, [topicId]);
+  }, [loadTopicData]);
 
-  const loadTopicData = async () => {
+  const loadTopicData = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -37,7 +37,7 @@ const FeedbackPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [topicId]);
 
   const handleFeedbackSubmit = () => {
     // Refresh analytics after feedback submission
