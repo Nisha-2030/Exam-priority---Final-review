@@ -16,7 +16,7 @@ export const getVideosByTopic = async (topicId) => {
   try {
     const response = await apiClient.get(`/videos/topic/${topicId}`);
     console.log('Videos for topic fetched successfully');
-    return response.data.data || response.data;
+    return response?.data?.data ?? response?.data ?? [];
   } catch (error) {
     console.error('Error fetching videos by topic:', error);
     throw error;

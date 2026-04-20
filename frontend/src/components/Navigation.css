@@ -10,17 +10,21 @@
   right: 0;
   z-index: 100;
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
+  width: 100%;
+  min-height: 96px;
 }
 
 .nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
+  padding: 1.35rem 2rem;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 /* ============ LOGO ============ */
@@ -107,7 +111,7 @@
   align-items: center;
   gap: 0.75rem;
   background: rgba(255, 255, 255, 0.15);
-  padding: 0.65rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 50px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
@@ -152,7 +156,7 @@
   background: rgba(255, 255, 255, 0.2);
   color: white;
   border: 1px solid white;
-  padding: 0.65rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
@@ -309,6 +313,13 @@
   border-left: 3px solid #1a1a2e;
 }
 
+.dropdown-divider {
+  border: none;
+  height: 1px;
+  background: rgba(26, 26, 46, 0.2);
+  margin: 0.5rem 0;
+}
+
 .dropdown-link:first-child {
   border-radius: 12px 12px 0 0;
 }
@@ -329,7 +340,7 @@
 
   .nav-menu {
     position: fixed;
-    top: 70px;
+    top: 96px;
     left: 0;
     right: 0;
     background: linear-gradient(135deg, #7cd1e2 0%, #e99ae6 100%);

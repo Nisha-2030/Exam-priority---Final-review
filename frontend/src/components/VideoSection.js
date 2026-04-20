@@ -13,6 +13,15 @@ const VideoSection = ({ topicId, subjectId, isLoading = false, onLoadingChange }
     loadVideos();
   }, [topicId, subjectId]);
 
+  const normalizeResponseData = (response) => {
+    if (!response) return [];
+    if (Array.isArray(response)) return response;
+    return response?.data?.data ?? response?.data ?? [];
+  };
+
+  const itemMatchesTopic = (item) =>
+    item?.topic?._id === topicId || item?.topic === topicId;
+
   const loadVideos = async () => {
     setLocalLoading(true);
     onLoadingChange?.(true);
@@ -23,14 +32,15 @@ const VideoSection = ({ topicId, subjectId, isLoading = false, onLoadingChange }
       
       let data;
       if (topicId) {
-        data = await getVideosByTopic(topicId);
+        data = normalizeResponseData(await getVideosByTopic(topicId));
       } else if (subjectId) {
-        data = await getVideosBySubject(subjectId);
+        data = normalizeResponseData(await getVideosBySubject(subjectId));
       } else {
-        data = await getAllVideos();
+        data = normalizeResponseData(await getAllVideos());
       }
 
-      setVideos(data || []);
+      const finalVideos = topicId ? data.filter(itemMatchesTopic) : data;
+      setVideos(finalVideos);
       setError(null);
     } catch (err) {
       console.error('Error loading videos:', err);

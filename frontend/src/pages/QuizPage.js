@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getQuizByTopic } from '../services/quizService';
 import { getMaterialsByTopic } from '../services/materialService';
+import { recordQuizAttempt } from '../services/progressService';
 import QuizComponent from '../components/QuizComponent';
 import Card from '../components/Card';
 import './QuizPage.css';
@@ -17,6 +18,15 @@ const QuizPage = () => {
   useEffect(() => {
     loadQuiz();
   }, [topicId]);
+
+  const normalizeResponseData = (response) => {
+    if (!response) return [];
+    if (Array.isArray(response)) return response;
+    return response?.data?.data ?? response?.data ?? [];
+  };
+
+  const itemMatchesTopic = (item) =>
+    item?.topic?._id === topicId || item?.topic === topicId;
 
   const loadQuiz = async () => {
     try {
@@ -42,8 +52,8 @@ const QuizPage = () => {
 
       // also load materials references for this topic
       try {
-        const mats = await getMaterialsByTopic(topicId);
-        const mList = mats || [];
+        const mats = normalizeResponseData(await getMaterialsByTopic(topicId));
+        const mList = mats.filter(itemMatchesTopic);
         setMaterials(mList);
       } catch (mErr) {
         console.warn('Failed to load materials for references', mErr);
@@ -63,10 +73,19 @@ const QuizPage = () => {
   };
 
   const [submittedResult, setSubmittedResult] = useState(null);
-  const handleSubmit = (result) => {
+  const handleSubmit = async (result) => {
     console.log('Quiz submitted with result:', result);
     setSubmittedResult(result);
-    // do not auto navigate, allow student to review
+
+    try {
+      await recordQuizAttempt(topicId, {
+        score: result.score,
+        totalQuestions: result.totalQuestions,
+        answers: [],
+      });
+    } catch (err) {
+      console.error('Error recording quiz attempt:', err);
+    }
   };
 
   if (loading) {

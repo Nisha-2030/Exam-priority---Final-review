@@ -9,6 +9,15 @@ const QuizSection = ({ topicId, subjectId, userAnswered = {}, onLoadingChange })
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  const normalizeResponseData = (response) => {
+    if (!response) return [];
+    if (Array.isArray(response)) return response;
+    return response?.data?.data ?? response?.data ?? [];
+  };
+
+  const itemMatchesTopic = (item) =>
+    item?.topic?._id === topicId || item?.topic === topicId;
+
   const loadQuizzes = async () => {
     try {
       setLoading(true);
@@ -17,17 +26,14 @@ const QuizSection = ({ topicId, subjectId, userAnswered = {}, onLoadingChange })
 
       let data;
       if (topicId) {
-        data = await getQuizzesByTopic(topicId);
+        data = normalizeResponseData(await getQuizzesByTopic(topicId));
       } else if (subjectId) {
-        data = await getQuizzesBySubject(subjectId);
+        data = normalizeResponseData(await getQuizzesBySubject(subjectId));
       } else {
-        data = await getAllQuizzes();
+        data = normalizeResponseData(await getAllQuizzes());
       }
-      // normalize axios response
-      if (data && data.data) {
-        data = data.data.data || data.data;
-      }
-      setQuizzes(data || []);
+
+      setQuizzes(topicId ? data.filter(itemMatchesTopic) : data);
     } catch (err) {
       setError(err);
       console.error('Error loading quizzes:', err);

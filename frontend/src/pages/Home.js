@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import { useAuth } from '../context/AuthContext';
@@ -6,15 +6,6 @@ import { useAuth } from '../context/AuthContext';
 const Home = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   if (user) {
     if (user.role === 'admin') {

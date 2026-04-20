@@ -15,7 +15,7 @@ export const getQuizzesByTopic = async (topicId) => {
   try {
     const response = await apiClient.get(`/quizzes/topic/${topicId}`);
     console.log('Quizzes for topic fetched successfully');
-    return response.data.data || response.data;
+    return response?.data?.data ?? response?.data ?? [];
   } catch (error) {
     console.error('Error fetching quizzes:', error.response?.data?.error || error.message);
     throw error.response?.data?.error || 'Failed to fetch quizzes';

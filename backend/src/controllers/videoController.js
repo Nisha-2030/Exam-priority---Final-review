@@ -111,7 +111,10 @@ const createVideo = async (req, res) => {
     });
 
     await video.save();
-    await video.populate('subject', 'name').populate('topic', 'name');
+    await video.populate([
+      { path: 'subject', select: 'name' },
+      { path: 'topic', select: 'name' },
+    ]);
 
     res.status(201).json({
       success: true,

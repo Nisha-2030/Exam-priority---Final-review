@@ -14,7 +14,7 @@ export const getAllMaterials = async () => {
 export const getMaterialsByTopic = async (topicId) => {
   try {
     const response = await apiClient.get(`/materials/topic/${topicId}`);
-    return response.data.data || response.data;
+    return response?.data?.data ?? response?.data ?? [];
   } catch (error) {
     console.error('Error fetching materials by topic:', error);
     throw error;

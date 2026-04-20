@@ -19,6 +19,15 @@ const MaterialDetails = () => {
   const [error, setError] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState('all');
 
+  const normalizeResponseData = (response) => {
+    if (!response) return [];
+    if (Array.isArray(response)) return response;
+    return response?.data?.data ?? response?.data ?? [];
+  };
+
+  const itemMatchesTopic = (item) =>
+    item?.topic?._id === topicId || item?.topic === topicId;
+
   useEffect(() => {
     loadData();
   }, [topicId]);
@@ -30,28 +39,28 @@ const MaterialDetails = () => {
 
       // Get topic details
       const topicResp = await getTopicById(topicId);
-      const topicData = topicResp?.data?.data || topicResp?.data;
+      const topicData = topicResp?.data?.data ?? topicResp?.data ?? topicResp;
       setTopic(topicData);
 
       // Get materials for this topic
-      const materialsData = await getMaterialsByTopic(topicId);
+      const materialsData = normalizeResponseData(await getMaterialsByTopic(topicId));
       console.log('materialsData', materialsData);
-      setMaterials(materialsData || []);
+      setMaterials(materialsData.filter(itemMatchesTopic));
 
       // Get videos and quizzes for this topic
       try {
-        const videosData = await getVideosByTopic(topicId);
+        const videosData = normalizeResponseData(await getVideosByTopic(topicId));
         console.log('videosData', videosData);
-        setVideos(videosData || []);
+        setVideos(videosData.filter(itemMatchesTopic));
       } catch (vErr) {
         console.warn('No videos for this topic', vErr.response || vErr.message);
         setVideos([]);
       }
 
       try {
-        const quizzesData = await getQuizzesByTopic(topicId);
+        const quizzesData = normalizeResponseData(await getQuizzesByTopic(topicId));
         console.log('quizzesData', quizzesData);
-        setQuizzes(quizzesData || []);
+        setQuizzes(quizzesData.filter(itemMatchesTopic));
       } catch (qErr) {
         console.warn('No quizzes for this topic', qErr.response || qErr.message);
         setQuizzes([]);
@@ -200,6 +209,25 @@ const MaterialDetails = () => {
           </Card>
         )}
       </div>
+
+      {/* Feedback Section */}
+      {topic && (
+        <Card title="💬 Feedback & Reviews">
+          <div className="feedback-cta-section">
+            <div className="feedback-cta-content">
+              <h3>Share Your Feedback</h3>
+              <p>Help improve this topic by sharing your thoughts, ratings, and suggestions. View analytics and see what other students think!</p>
+              <button 
+                className="btn-feedback"
+                onClick={() => navigate(`/feedback/${topicId}`)}
+              >
+                <span className="btn-icon">💬</span>
+                Go to Feedback Page
+              </button>
+            </div>
+          </div>
+        </Card>
+      )}
     </div>
   );
 };

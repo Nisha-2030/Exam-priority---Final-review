@@ -15,7 +15,7 @@
 }
 
 .manage-topics-back-btn {
-  background: #8f5be8;
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -27,7 +27,7 @@
 }
 
 .manage-topics-back-btn:hover {
-  background: #7f4ed6;
+  background: linear-gradient(135deg, #b876d9 0%, #ada5e3 100%);
 }
 
 .manage-topics-header h1 {
@@ -89,8 +89,8 @@
 .manage-topics-form-group input:focus,
 .manage-topics-form-group select:focus {
   outline: none;
-  border-color: #8f5be8;
-  box-shadow: 0 0 0 3px rgba(143, 91, 232, 0.14);
+  border-color: #c489e2;
+  box-shadow: 0 0 0 3px rgba(196, 137, 226, 0.14);
 }
 
 .manage-topics-btn-primary,
@@ -104,7 +104,7 @@
 }
 
 .manage-topics-btn-primary {
-  background: linear-gradient(90deg, #c489e2 0%, #bea8ec 100%);
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
   padding: 0.9rem 1rem;
   font-size: 1rem;
 }
@@ -127,7 +127,7 @@
   background: #e9edf4;
   border-radius: 12px;
   padding: 1.25rem;
-  border-left: 4px solid #8f5be8;
+  border-left: 4px solid #c489e2;
 }
 
 .manage-topic-item-info h3 {
@@ -151,9 +151,14 @@
 }
 
 .manage-topics-btn-manage {
-  background: #8f5be8;
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
   padding: 0.72rem 1.1rem;
   font-size: 1rem;
+}
+
+.manage-topics-btn-manage:hover,
+.manage-topics-btn-primary:hover {
+  background: linear-gradient(135deg, #b876d9 0%, #ada5e3 100%);
 }
 
 .manage-topics-btn-delete {

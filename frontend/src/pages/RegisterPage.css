@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 .register-wrapper {
+  --nav-height: 92px;
   --lav-1: #f1e9ff;
   --lav-2: #d9c8ff;
   --lav-3: #bfa6ff;
   --lav-4: #9f84ff;
   --ink: #111;
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--nav-height));
+  margin-top: var(--nav-height);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -199,6 +201,12 @@
   }
   .register-info {
     text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-wrapper {
+    --nav-height: 74px;
   }
 }
 

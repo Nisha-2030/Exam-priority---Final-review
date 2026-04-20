@@ -17,6 +17,8 @@ import MaterialDetails from './pages/MaterialDetails';
 import QuizPage from './pages/QuizPage';
 import MaterialView from './pages/MaterialView';
 import AdminMaterialView from './pages/AdminMaterialView';
+import FeedbackAdminDashboard from './pages/FeedbackAdminDashboard';
+import FeedbackPage from './pages/FeedbackPage';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import './App.css';
 
@@ -79,6 +81,15 @@ function App() {
           />
 
           <Route
+            path="/feedback-analytics"
+            element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <FeedbackAdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
             path="/manage-subjects/:examId"
             element={
               <ProtectedRoute allowedRoles={['admin']}>
@@ -122,6 +133,16 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          <Route
+            path="/feedback/:topicId"
+            element={
+              <ProtectedRoute allowedRoles={['student']}>
+                <FeedbackPage />
+              </ProtectedRoute>
+            }
+          />
+
           <Route
             path="/material/:materialId"
             element={

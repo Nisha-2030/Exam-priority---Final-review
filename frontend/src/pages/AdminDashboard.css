@@ -1,8 +1,8 @@
 .admin-dashboard {
   max-width: 1560px;
   margin: 0 auto;
-  padding: 2rem;
-  padding-top: 110px;
+  padding: 1.5rem;
+  padding-top: 130px !important;
   background: var(--bg-gradient);
   min-height: 100vh;
 }
@@ -10,15 +10,20 @@
 .admin-header {
   background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
   color: white;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 8px;
-  margin-top: 1.5rem;
-  margin-bottom: 2rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(46, 61, 73, 0.12);
+  position: relative;
+  z-index: 1;
 }
 
 .admin-header h1 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  color: white;
 }
 
 .admin-loading {
@@ -31,7 +36,7 @@
 .admin-tabs {
   display: flex;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   border-bottom: 2px solid #bdc3c7;
 }
 
@@ -59,7 +64,7 @@
 .admin-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .exams-section {

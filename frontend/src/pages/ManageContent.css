@@ -93,7 +93,7 @@
   margin: 0 auto;
 }
 
-.manage-content-container .tab-content.split-tab-layout,
+.manage-content-container .manage-tab-content.split-tab-layout,
 .manage-content-container .quiz-tab-modern-layout {
   display: grid;
   grid-template-columns: minmax(460px, 1.15fr) minmax(560px, 1.35fr);
@@ -101,14 +101,14 @@
   align-items: start;
 }
 
-.manage-content-container .tab-content.split-tab-layout > .card,
+.manage-content-container .manage-tab-content.split-tab-layout > .card,
 .manage-content-container .quiz-form-modern .card,
 .manage-content-container .quiz-list-modern .card {
   margin-bottom: 0;
   min-width: 0;
 }
 
-.manage-content-container .tab-content.split-tab-layout > .card:first-child,
+.manage-content-container .manage-tab-content.split-tab-layout > .card:first-child,
 .manage-content-container .quiz-form-modern {
   position: sticky;
   top: 1.5rem;
@@ -404,12 +404,12 @@
 }
 
 @media (max-width: 1100px) {
-  .manage-content-container .tab-content.split-tab-layout,
+  .manage-content-container .manage-tab-content.split-tab-layout,
   .manage-content-container .quiz-tab-modern-layout {
     grid-template-columns: 1fr;
   }
 
-  .manage-content-container .tab-content.split-tab-layout > .card:first-child,
+  .manage-content-container .manage-tab-content.split-tab-layout > .card:first-child,
   .manage-content-container .quiz-form-modern {
     position: static;
   }

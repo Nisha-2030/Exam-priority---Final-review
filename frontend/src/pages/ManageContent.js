@@ -44,19 +44,34 @@ const ManageContent = () => {
   const [videos, setVideos] = useState([]);
   const [quizzes, setQuizzes] = useState([]);
 
+  const normalizeResponseData = (response) => {
+    if (!response) return [];
+    if (Array.isArray(response)) return response;
+    return response?.data?.data ?? response?.data ?? [];
+  };
+
+  const itemMatchesTopic = (item) =>
+    item?.topic?._id === topicId || item?.topic === topicId;
+
   const loadContent = useCallback(async () => {
     try {
+      setMaterials([]);
+      setVideos([]);
+      setQuizzes([]);
+      setTopic(null);
+
       const topicRes = await getTopicById(topicId);
-      setTopic(topicRes.data);
+      const topicData = topicRes?.data?.data ?? topicRes?.data ?? topicRes;
+      setTopic(topicData);
 
-      const materialsRes = await getMaterialsByTopic(topicId);
-      setMaterials(Array.isArray(materialsRes) ? materialsRes : []);
+      const materialsRes = normalizeResponseData(await getMaterialsByTopic(topicId));
+      setMaterials(materialsRes.filter(itemMatchesTopic));
 
-      const videosRes = await getVideosByTopic(topicId);
-      setVideos(Array.isArray(videosRes) ? videosRes : []);
+      const videosRes = normalizeResponseData(await getVideosByTopic(topicId));
+      setVideos(videosRes.filter(itemMatchesTopic));
 
-      const quizzesRes = await getQuizzesByTopic(topicId);
-      setQuizzes(Array.isArray(quizzesRes) ? quizzesRes : []);
+      const quizzesRes = normalizeResponseData(await getQuizzesByTopic(topicId));
+      setQuizzes(quizzesRes.filter(itemMatchesTopic));
 
       setLoading(false);
     } catch (error) {
@@ -298,7 +313,7 @@ const ManageContent = () => {
         <div className="manage-content-stage">
         {/* ============ MATERIALS TAB ============ */}
         {activeTab === 'material' && (
-          <div className="tab-content split-tab-layout aligned-layout">
+          <div className="manage-tab-content split-tab-layout aligned-layout">
             <Card title="➕ Add New Material">
               <div className="form-group">
                 <label>Material Title</label>
@@ -393,7 +408,7 @@ const ManageContent = () => {
 
         {/* ============ VIDEOS TAB ============ */}
         {activeTab === 'videos' && (
-          <div className="tab-content split-tab-layout aligned-layout">
+          <div className="manage-tab-content split-tab-layout aligned-layout">
             <Card title="➕ Add New Video">
               <div className="form-group">
                 <label>Video Title</label>

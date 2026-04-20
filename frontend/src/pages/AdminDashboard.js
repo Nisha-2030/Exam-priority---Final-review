@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminDashboard.css';
 import Card from '../components/Card';
+import FeedbackAdminDashboard from './FeedbackAdminDashboard';
 import { 
   getAllExams, 
   createExam, 
@@ -128,6 +129,12 @@ const AdminDashboard = () => {
         >
           👥 Manage Students
         </button>
+        <button
+          className={`tab-btn ${activeTab === 'feedback' ? 'active' : ''}`}
+          onClick={() => setActiveTab('feedback')}
+        >
+          📊 Feedback Analytics
+        </button>
       </div>
 
       <div className="admin-content">
@@ -246,6 +253,9 @@ const AdminDashboard = () => {
               )}
             </div>
           </Card>
+        )}
+        {activeTab === 'feedback' && (
+          <FeedbackAdminDashboard />
         )}
       </div>
     </div>

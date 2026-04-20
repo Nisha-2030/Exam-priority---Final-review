@@ -12,16 +12,23 @@ const checkAdmin = async () => {
     const admin = await User.findOne({ email: 'admin@example.com' });
 
     if (admin) {
+      const hasDefaultPassword = await admin.comparePassword('admin123');
       console.log('✓ Admin found in database:');
       console.log('  Email:', admin.email);
       console.log('  Role:', admin.role);
       console.log('  Password hash exists:', !!admin.password);
+      console.log('  Using default admin123:', hasDefaultPassword);
+      if (!hasDefaultPassword) {
+        admin.password = 'admin123';
+        await admin.save();
+        console.log('✓ Existing admin password reset to admin123 for development.');
+      }
     } else {
       console.log('✗ Admin NOT found. Creating new admin...');
       const newAdmin = new User({
         name: 'Admin User',
         email: 'admin@example.com',
-        password: 'Admin@123',
+        password: 'admin123',
         role: 'admin',
       });
       await newAdmin.save();

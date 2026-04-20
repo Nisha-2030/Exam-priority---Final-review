@@ -47,6 +47,11 @@ const StudentLogin = () => {
       <div className="login-card">
         <h2>Log In</h2>
         <p>Welcome back, student</p>
+        {error && (
+          <p className="login-error" role="alert">
+            {error}
+          </p>
+        )}
         <form onSubmit={handleSubmit} className="login-form">
           <div className="input-group">
             <FaUser className="icon" />
@@ -78,9 +83,17 @@ const StudentLogin = () => {
             <label>
               <input type="checkbox" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} /> Remember
             </label>
-            <a href="#" className="forgot">Forgotten?</a>
+            <button
+              type="button"
+              className="forgot"
+              onClick={() => setError('Password reset is not available yet. Please contact admin.')}
+            >
+              Forgotten?
+            </button>
           </div>
-          <button className="btn-login" type="submit">Log In</button>
+          <button className="btn-login" type="submit" disabled={loading}>
+            {loading ? 'Logging in...' : 'Log In'}
+          </button>
           <p className="signup-redirect">
             Don't have an account? <Link to="/student-register">Sign Up</Link>
           </p>

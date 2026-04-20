@@ -18,6 +18,14 @@ PORT=5000
 NODE_ENV=development
 ```
 
+> If you do not have an admin user yet, the server will now auto-create a default admin account on first run with:
+> - Email: `admin@example.com`
+> - Password: `admin123`
+>> If an admin account already exists from a previous run, the backend will reset that account to `admin123` in local development so login works consistently.
+>> Change the password immediately after your first login.
+>
+> If `npm start` fails with `EADDRINUSE`, another backend is already running on port 5000. Stop that process or change `PORT` in `backend/.env`.
+
 ### 3. MongoDB Setup
 
 **Option A: Local MongoDB**

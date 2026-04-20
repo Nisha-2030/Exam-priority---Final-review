@@ -13,6 +13,15 @@ const MaterialSection = ({ topicId, subjectId, isLoading = false, onLoadingChang
     loadMaterials();
   }, [topicId, subjectId]);
 
+  const normalizeResponseData = (response) => {
+    if (!response) return [];
+    if (Array.isArray(response)) return response;
+    return response?.data?.data ?? response?.data ?? [];
+  };
+
+  const itemMatchesTopic = (item) =>
+    item?.topic?._id === topicId || item?.topic === topicId;
+
   const loadMaterials = async () => {
     setLocalLoading(true);
     onLoadingChange?.(true);
@@ -23,15 +32,16 @@ const MaterialSection = ({ topicId, subjectId, isLoading = false, onLoadingChang
       
       let data;
       if (topicId) {
-        data = await getMaterialsByTopic(topicId);
+        data = normalizeResponseData(await getMaterialsByTopic(topicId));
       } else if (subjectId) {
-        data = await getMaterialsBySubject(subjectId);
+        data = normalizeResponseData(await getMaterialsBySubject(subjectId));
       } else {
-        data = await getAllMaterials();
+        data = normalizeResponseData(await getAllMaterials());
       }
 
-      setMaterials(data || []);
-      setFilteredMaterials(data || []);
+      const finalMaterials = topicId ? data.filter(itemMatchesTopic) : data;
+      setMaterials(finalMaterials);
+      setFilteredMaterials(finalMaterials);
       setError(null);
     } catch (err) {
       console.error('Error loading materials:', err);

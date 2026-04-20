@@ -198,6 +198,59 @@
   font-size: 1.1rem;
 }
 
+/* Feedback CTA Section */
+.feedback-cta-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background: linear-gradient(135deg, #c489e2 0%, #bea8ec 100%);
+  border-radius: 12px;
+  color: white;
+}
+
+.feedback-cta-content {
+  flex: 1;
+}
+
+.feedback-cta-content h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.feedback-cta-content p {
+  margin: 0 0 1.5rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.btn-feedback {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: white;
+  color: #a76fff;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-feedback:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background: #f0f0f0;
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+}
+
 @media (max-width: 768px) {
   .material-details-container {
     padding: 1rem;
@@ -218,5 +271,24 @@
 
   .material-body {
     padding: 1rem;
+  }
+
+  .feedback-cta-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .feedback-cta-content {
+    width: 100%;
+  }
+
+  .feedback-cta-content p {
+    margin-bottom: 1.25rem;
+  }
+
+  .btn-feedback {
+    width: 100%;
+    justify-content: center;
   }
 }

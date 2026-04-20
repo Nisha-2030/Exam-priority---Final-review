@@ -10,7 +10,14 @@ const seedAdmin = async () => {
     // Check if admin already exists
     const existingAdmin = await User.findOne({ email: 'admin@example.com' });
     if (existingAdmin) {
-      console.log('✓ Admin already exists!');
+      const hasDefaultPassword = await existingAdmin.comparePassword('admin123');
+      if (!hasDefaultPassword) {
+        existingAdmin.password = 'admin123';
+        await existingAdmin.save();
+        console.log('✓ Existing admin password reset to admin123 for development.');
+      } else {
+        console.log('✓ Admin already exists with default password.');
+      }
       process.exit(0);
     }
 
@@ -18,14 +25,14 @@ const seedAdmin = async () => {
     const admin = new User({
       name: 'Admin User',
       email: 'admin@example.com',
-      password: 'Admin@123', // Change this after first login
+      password: 'admin123', // Change this after first login
       role: 'admin',
     });
 
     await admin.save();
     console.log('✓ Admin account created successfully!');
     console.log('Email: admin@example.com');
-    console.log('Password: Admin@123');
+    console.log('Password: admin123');
     console.log('\n⚠️  Please change the password after your first login!');
 
     process.exit(0);
