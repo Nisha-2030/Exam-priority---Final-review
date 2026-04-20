@@ -69,22 +69,33 @@ app.use(cors());
 app.use(express.json());
 
 const startServer = async () => {
-  await connectDB();
-  await seedDefaultAdmin();
+  try {
+    console.log("Starting server...");
 
-  const PORT = process.env.PORT || 5000;
-  const server = app.listen(PORT, () => {
-    console.log(`✓ Server running on http://localhost:${PORT}`);
-  });
+    await connectDB();
+    console.log("MongoDB connected ✅");
 
-  server.on('error', (error) => {
-    if (error.code === 'EADDRINUSE') {
-      console.error(`✗ Port ${PORT} is already in use. Is another backend instance running?`);
-      console.error('  If so, stop the existing process or change PORT in backend/.env.');
-      process.exit(1);
-    }
-    throw error;
-  });
+    await seedDefaultAdmin();
+    console.log("Admin seeding done ✅");
+
+    const PORT = process.env.PORT || 5000;
+
+    const server = app.listen(PORT, () => {
+      console.log(`✓ Server running on port ${PORT}`);
+    });
+
+    server.on('error', (error) => {
+      if (error.code === 'EADDRINUSE') {
+        console.error(`✗ Port ${PORT} already in use`);
+        process.exit(1);
+      }
+      throw error;
+    });
+
+  } catch (error) {
+    console.error("❌ STARTUP ERROR:", error);
+    process.exit(1);
+  }
 };
 
 // Root route
