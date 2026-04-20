@@ -1,4 +1,17 @@
+// 🔴 ADD THIS AT VERY TOP
+process.on("uncaughtException", (err) => {
+  console.error("UNCAUGHT EXCEPTION:", err);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.error("UNHANDLED REJECTION:", err);
+});
 require('dotenv').config();
+
+// 🔍 ADD DEBUG HERE
+console.log("ENV CHECK:");
+console.log("MONGODB_URI:", process.env.MONGODB_URI);
+console.log("JWT_SECRET:", process.env.JWT_SECRET);
 
 if (!process.env.MONGODB_URI) {
   if (process.env.NODE_ENV === "development") {
