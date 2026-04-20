@@ -1,9 +1,12 @@
 require('dotenv').config();
 
-if (!process.env.JWT_SECRET) {
-  console.warn('⚠️  JWT_SECRET is not set. Using a development fallback secret.');
-  console.warn('   Add JWT_SECRET to your .env file in backend/ if you want a persistent secret.');
-  process.env.JWT_SECRET = 'exampriority_dev_secret';
+if (!process.env.MONGODB_URI) {
+  if (process.env.NODE_ENV === "development") {
+    console.warn("⚠️ Using local MongoDB");
+    process.env.MONGODB_URI = "mongodb://localhost:27017/exam-priority";
+  } else {
+    throw new Error("❌ MONGODB_URI is not set in production");
+  }
 }
 
 const express = require('express');
